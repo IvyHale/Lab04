@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Lab04.View.PersonListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lab04.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding People, Mode=OneWay}" SelectedItem="{Binding SelectedPerson, Mode=TwoWay}" AutoGenerateColumns="False" Grid.RowSpan="2" Grid.ColumnSpan="6" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Surname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date of birth" Binding="{Binding BirthDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Is Adult" Binding="{Binding IsAdult}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sun Sign" Binding="{Binding SunSign}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Chinese Sign" Binding="{Binding ChineseSign}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Is Birthday" Binding="{Binding IsBirthday}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Name="addButton" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Add" Command="{Binding AddCommand}"/>
+        <Button Name="editButton" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="Edit" Command="{Binding EditCommand}"/>
+        <Button Name="removeButton" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Content="Remove" Command="{Binding RemoveCommand}"/>
+        <Button Name="sortButton" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Sort by name" Command="{Binding SortNameCommand}"/>
+        <Button Name="filterButton" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Content="Adult filter" Command="{Binding FilterAdultCommand}"/>
+        <Button Name="unfilterButton" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Content="Unfilter" Command="{Binding UnfilterCommand}"/>
+        <Button Name="saveButton" Grid.Row="3" Grid.ColumnSpan="6" Content="Save" Command="{Binding SaveCommand}"/>
+    </Grid>
+</UserControl>
